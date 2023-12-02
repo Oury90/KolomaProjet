@@ -1,0 +1,21 @@
+<div class="container">
+        <div class="box">
+            <div class="images">
+                <% images.forEach(image => { %>
+                    <img src="<%= image %>" alt="Photo publier" width="100px" height="100px">
+                  <% }); %>
+                <!-- <img src="uploads/image-1701456656649.gif" alt="avatar" width=100px height=100px> -->
+            </div>
+            <div class="content">
+                <h5><%= locals.userName %></h5>
+                <p><%= locals.userMessage %></p>
+                <div class="like">
+                    <!-- icon like -->
+                    <button name="like" id="likeButton"><i class='bx bx-like'><%= likes %></i></button>
+                    <button name="dislike" id="dislikeButton"><i class='bx bx-dislike' ><%= dislike %></i></button>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>

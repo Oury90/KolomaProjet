@@ -1,0 +1,35 @@
+
+.container{
+    border: 1px solid black;
+    padding: 12px;
+    width: 300px;
+    height: 400px;
+    border-radius: 12px;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+}
+.images{
+    border: 1px solid black;
+    border-radius: 12px;
+    height: 200px;
+}
+.content h1 {
+    text-align: center;
+}
+.like{
+    display: flex;
+    column-gap: 1rem;
+}
+.like button{
+    border: none;
+}
+.btn{
+    display: inline-block;
+    margin-top: 12px;
+    border: 1px solid black;
+    padding: 2px 5px;
+}

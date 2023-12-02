@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/main/styles.css">
+    <title>Koloma</title>
+</head>
+<body>
+    <h1>news</h1>
+    <% if(locals.posts){%>
+        
+        <% for(let i=0; i<=posts.length -1; i++){%>
+
+            <div class="container">
+                <div class="box">
+                    <div class="images">
+                        <% for(let j=0; j<=posts[i].uploadImage.link.length; j++){%>
+                            <img src="/public/uploads/" +<%= posts[i].uploadImage.link[j]%> alt="Photo publier" width="100px" height="100px">
+
+                       <% } %>
+                    </div>
+                    <div class="content">
+                        <h5><%= posts[i].post.name %></h5>
+                        <p><%= posts[i].post.message %></p>
+                        <div class="like">
+                            <!-- icon like -->
+                            <button name="like" id="likeButton"><i class='bx bx-like'><%= posts[i].like.likes %></i></button>
+                            <button name="dislike" id="dislikeButton"><i class='bx bx-dislike' ><%= posts[i].like.dislike %></i></button>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+        <%} %>
+
+        
+
+
+   <% }else{ %>
+        <% console.error(); %>
+   <% } %>
+    
+    <a href="/form" class="btn" id="btn">Post</a>
+
+
+    <script>
+
+       
+        // Ajouter un gestionnaire d'événements pour le clic sur le bouton
+        document.getElementById('likeButton').addEventListener('click', () => {
+          fetch('/increment-like', { method: 'POST' })
+            .then(response => response.json())
+            .then(() => {
+              updateLikesCount();
+            });
+        });
+
+        // Decrementer un gestionnaire d'evenements pour le clic sur le bouton
+        document.getElementById("dislikeButton").addEventListener("click", () =>{
+            fetch("/decrement-like", {method: 'POST'})
+            .then(response =>response.json())
+            .then(() =>{
+                updateLikesCount();
+            });
+        });
+    
+        // Initialiser le nombre de likes au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+          updateLikesCount();
+        });
+      </script>
+</body>
+</html>

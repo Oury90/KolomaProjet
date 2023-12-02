@@ -28,7 +28,9 @@ let inlikeCount = 0;
 
 let posts =[];
 // get to the home page
+
 app.get("/", (req, res) =>{
+    console.log(posts)
     // const images = files.filter(file => path.extname(file).toLowerCase() === '.jpg' || path.extname(file).toLowerCase() === '.png').map(file => `uploads/${file}`);
 
     res.render("index.ejs", {
